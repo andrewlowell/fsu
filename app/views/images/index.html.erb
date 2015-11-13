@@ -1,0 +1,27 @@
+<h1>My Images</h1>
+
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to "Sign in", new_user_session_path %>
+    &nbsp;or&nbsp;
+    <%= link_to "Sign up", new_user_registration_path %>
+  </div>
+<% end %>
+
+<%= link_to 'Link your familysearch account!', '/auth/familysearch' %>
+<!-- <%= "Your account is connected to familysearch!" if @linked %> -->
+
+<%= form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
+  <div class="fallback">
+    <%= f.file_field :data %><br>
+    <%= f.submit "Upload my Picture" %>
+  </div>
+<% end %>
+
+<div class="index">
+  <%= render "layouts/index" %>
+</div>

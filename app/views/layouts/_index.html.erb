@@ -1,0 +1,8 @@
+<% @images.each do |image| %>
+  <div>
+    <div class="img-thumbnail"><%= image_tag image.data.url(:thumb), alt: image.data.url(:thumb) %></div>
+    <% if user_signed_in? %>
+      <%= link_to "Post this picture to familysearch memories", "/familysearch/post_pic/#{image.id}/#{image.data.original_filename}" %>
+    <% end %>
+  </div>
+<% end %>
