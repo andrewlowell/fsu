@@ -12,8 +12,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Link your familysearch account!', '/auth/familysearch' %>
-<!-- <%= "Your account is connected to familysearch!" if @linked %> -->
+<%= link_to 'Link your familysearch account!', '/auth/familysearch' if user_signed_in? %>
 
 <%= form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
   <div class="fallback">

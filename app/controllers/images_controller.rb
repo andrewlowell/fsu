@@ -3,11 +3,6 @@ class ImagesController < ApplicationController
 
     @images = Image.all
     @image = Image.new
-    if user_signed_in? && current_user.keyfs.present?
-      @linked = true
-    else
-      @linked = false
-    end
 
   end
 
