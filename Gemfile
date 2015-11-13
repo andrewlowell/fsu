@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'devise'
-gem 'dotenv'
 gem 'http'
 gem 'omniauth-familysearch'
 gem 'omniauth-oauth2', '~> 1.3.1'
