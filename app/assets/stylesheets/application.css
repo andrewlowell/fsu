@@ -16,3 +16,13 @@
  *= require foundation_and_overrides
 
  */
+
+.rollover img:hover {
+  opacity: 0.33;
+}
+
+.image-and-link-container {
+  border: solid 1px black;
+  margin: 5px;
+  padding: 5px;
+}

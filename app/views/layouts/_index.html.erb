@@ -1,8 +1,32 @@
 <% @images.each do |image| %>
-  <div>
-    <div class="img-thumbnail"><%= image_tag image.data.url(:thumb), alt: image.data.url(:thumb) %></div>
-    <% if user_signed_in? %>
-      <%= link_to "Post this picture to familysearch memories", "/familysearch/post_pic/#{image.id}/#{image.data.original_filename}" %>
-    <% end %>
-  </div>
+
+  <div class="image-and-link-container">
+
+      <div class="img-thumbnail rollover">
+        <%= image_tag image.data.url(:medium), alt: image.data.url(:medium) %>
+      </div>
+
+      <% if user_signed_in? %>
+        <%= link_to "Post this picture to familysearch memories",
+          "/familysearch/post_pic/#{image.id}/#{image.data.original_filename}" %>
+        </br>
+        <% # link_to "Attach a link to this picture as a source to a person on your tree", "familysearch/create_description/#{image.id}"%>
+      <% end %>
+
+      <a href="#" data-reveal-id="myModal">Put a reference to this picture in your FamilySearch source box</a>
+
+      <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+        <h2 id="modalTitle">Awesome. I have it.</h2>
+        <%= form_tag("familysearch/create_description/#{image.id}", method: "get") do %>
+          <%= label_tag(:title, "Title for the source:") %>
+          <%= text_field_tag(:title) %>
+          <%= label_tag(:note, "Note for the source:") %>
+          <%= text_field_tag(:note) %>
+          <%= submit_tag("Submit") %>
+        <% end %>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+      </div>
+
+    </div>
+
 <% end %>

@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'familysearch#auth'
 
-  resources :images, only: [:index, :create]
+  resources :images, only: [:index, :create, :show]
 
   get '/familysearch/post_pic/:id/:filename', to: 'familysearch#post_pic', as: :post_pic
+
+  get 'familysearch/create_description/:id', to: 'familysearch#create_description', as: :create_desription
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
