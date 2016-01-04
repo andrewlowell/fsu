@@ -8,6 +8,7 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'dropzonejs-rails'
 gem 'paperclip'
 gem 'foundation-rails'
+gem 'dropbox-api'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
