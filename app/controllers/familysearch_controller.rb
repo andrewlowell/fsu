@@ -2,6 +2,8 @@ class FamilysearchController < ApplicationController
 
   # before_action :authenticate_user!
 
+  require 'uri'
+
   def auth
     @user = current_user
     @auth = auth_hash
@@ -31,7 +33,8 @@ class FamilysearchController < ApplicationController
       ).code
 
       if @code == 401
-        redirect_to "/auth/familysearch?controller=postpic&id=#{params[:id]}&filename=#{params[:filename]}"
+        puts "Got the 401 code, redirecting"
+        redirect_to URI("/auth/familysearch?controller=postpic&id=#{params[:id]}&filename=#{params[:filename]}").to_s
       else
         redirect_to root_path
       end
